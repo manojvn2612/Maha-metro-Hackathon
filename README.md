@@ -11,6 +11,6 @@ Ahad Shaikh- [https://github.com/Ahad-23]
 
 Vansh Patel-
 
-Dev Soni-
+Dev Soni- [https://github.com/DEV0SONI]
 
 Bhavya Bharti-
