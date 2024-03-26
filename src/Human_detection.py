@@ -2,9 +2,9 @@ import cv2
 import numpy as np
 
 # Load YOLO
-net = cv2.dnn.readNet(r"Hackthon\MahaMetro\yolov3.weights", r"Hackthon\MahaMetro\yolov3.cfg")
+net = cv2.dnn.readNet("Hackthon\MahaMetro\yolov3.weights", "Hackthon\MahaMetro\yolov3.cfg")
 classes = []
-with open(r"Hackthon\MahaMetro\coco.names", "r") as f:
+with open("Hackthon\MahaMetro\coco.names", "r") as f:
     classes = [line.strip() for line in f.readlines()]
 
 # Define the class ID for person
