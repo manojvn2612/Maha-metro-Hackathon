@@ -2,9 +2,9 @@ import cv2
 import numpy as np
 
 # Load YOLO
-net = cv2.dnn.readNet("Hackthon\MahaMetro\yolov3.weights", "Hackthon\MahaMetro\yolov3.cfg")
+net = cv2.dnn.readNet("src\Pretrained_model\yolov3.weights", "src\Pretrained_model\yolov3.cfg")
 classes = []
-with open("Hackthon\MahaMetro\coco.names", "r") as f:
+with open("src\Pretrained_model\coco.names", "r") as f:
     classes = [line.strip() for line in f.readlines()]
 
 # Define the class ID for person
@@ -19,7 +19,6 @@ while True:
     ret, frame = cam.read()
     if not ret:
         break
-
     frame = cv2.cvtColor(cv2.flip(frame, 1), cv2.COLOR_BGR2RGB)
     height, width, _ = frame.shape
 
@@ -48,6 +47,7 @@ while True:
                 x = int(center_x - w / 2)
                 y = int(center_y - h / 2)
                 boxes.append([x, y, w, h])
+                print(total_boxes)
                 confidences.append(float(confidence))
                 class_ids.append(class_id)
 
@@ -68,7 +68,10 @@ while True:
     frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
 
     # Display output
-    cv2.imshow("YOLO Object Detection (Persons only)", frame)
+    cv2.imshow("Ticket Counter", frame)
+    print(f"Total boxes drawn: {len(indexes)}")
+    if len(indexes > 10):
+        print("More than threshold")
     key = cv2.waitKey(1)
     if key == ord('q'):
         break
